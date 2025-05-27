@@ -71,16 +71,16 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         const imageResponse = await fetch(
             `https://api.unsplash.com/search/photos?query=${country} ${interests} ${travelStyle}&client_id=${unsplashApiKey}`,
         )
-        const imageUrl = (await imageResponse.json()).results.slice(0, 3)
+        const imageUrls = (await imageResponse.json()).results.slice(0, 3)
             .map((result: any) => result.urls?.regular || null)
         const result = await database.createDocument(
             appwriteConfig.databaseId,
             appwriteConfig.tripCollectionId,
             ID.unique(),
             {
-                tripDetail: JSON.stringify(trip),
+                tripDetails: JSON.stringify(trip),
                 createdAt: new Date().toISOString(),
-                imageUrl,
+                imageUrls,
                 userId
             }
         )
