@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "react-router build --preset @vercel/react-router",
     "dev": "NODE_OPTIONS='--import ./instrument.server.mjs' react-router dev",
     "start": "NODE_OPTIONS='--import ./instrument.server.mjs' react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
@@ -38,6 +38,7 @@
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@vercel/react-router": "^1.1.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
